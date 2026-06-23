@@ -59,8 +59,8 @@ const RunOnce: FC<IRunOnceProps> = ({
                   {item.type === 'string' && (
                     <input
                       type="text"
-                      className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
-                      placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                      className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
+                      placeholder={`请输入${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
                       value={inputs[item.key]}
                       onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                       maxLength={item.max_length || DEFAULT_VALUE_MAX_LEN}
@@ -68,8 +68,8 @@ const RunOnce: FC<IRunOnceProps> = ({
                   )}
                   {item.type === 'paragraph' && (
                     <textarea
-                      className="block w-full flex-1 p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-blue-500 focus:border-blue-500 resize-none"
-                      placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                      className="block w-full flex-1 p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-blue-500 focus:border-blue-500 resize-none placeholder-gray-500"
+                      placeholder={`请输入${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
                       value={inputs[item.key]}
                       onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                     />
