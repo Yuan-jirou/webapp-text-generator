@@ -78,6 +78,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 [![Use EdgeOne Pages to deploy](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https://github.com/langgenius/webapp-text-generator)
 
+Deploy your Next.js application to Tencent EdgeOne Pages with just one click and go live in minutes.
+
+After clicking, simply log in to the EdgeOne Pages console, configure your build command, select an acceleration region, and set your environment variables as described in the Config App section above. 
+
+For a detailed walkthrough, see the Importing a Git Repository [guide](https://pages.edgeone.ai/document/importing-a-git-repository).
+
 ## Deploy on Vercel
 
 > ⚠️ If you are using [Vercel Hobby](https://vercel.com/pricing), your message will be trucated due to the limitation of vercel.
