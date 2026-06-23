@@ -27,6 +27,7 @@ const RunOnce: FC<IRunOnceProps> = ({
   onVisionFilesChange,
 }) => {
   const { t } = useTranslation()
+  const [companyName, setCompanyName] = React.useState('')
 
   const onClear = () => {
     const newInputs: Record<string, any> = {}
@@ -34,6 +35,7 @@ const RunOnce: FC<IRunOnceProps> = ({
       newInputs[item.key] = ''
     })
     onInputsChange(newInputs)
+    setCompanyName('')
   }
 
   return (
@@ -42,6 +44,24 @@ const RunOnce: FC<IRunOnceProps> = ({
         {/* input form */}
         <form className="flex-1 flex flex-col">
           <div className="flex-1 flex flex-col">
+            {/* Company Name Input */}
+            <div className='w-full flex flex-col'>
+              <label className='text-gray-900 text-sm font-medium px-4 pt-4'>公司名称</label>
+              <div className='mt-2 px-4'>
+                <input
+                  type="text"
+                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
+                  placeholder="请输入公司名称"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  maxLength={100}
+                />
+              </div>
+            </div>
+            {/* Divider */}
+            {promptConfig.prompt_variables.length > 0 && (
+              <div className='mt-3 mx-4 h-[1px] bg-gray-100'></div>
+            )}
             {promptConfig.prompt_variables.map((item, index) => (
               <div className='w-full flex flex-col' key={item.key} style={{ flex: index === 0 ? 1 : 0 }}>
                 <label className='text-gray-900 text-sm font-medium px-4 pt-4'>{item.name}</label>
