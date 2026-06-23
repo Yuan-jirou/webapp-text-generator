@@ -347,7 +347,21 @@ const TextGeneration = () => {
         changeLanguage(APP_INFO.default_language)
 
         const { user_input_form, file_upload, system_parameters }: any = await fetchAppParams()
-        const prompt_variables = userInputsFormToPromptVariables(user_input_form)
+        let prompt_variables = userInputsFormToPromptVariables(user_input_form)
+
+        // 如果没有输入字段，添加一个默认的文本输入
+        if (!prompt_variables || prompt_variables.length === 0) {
+          prompt_variables = [
+            {
+              key: 'text_input',
+              name: '输入文本',
+              required: true,
+              type: 'paragraph',
+              max_length: 4000,
+              options: [],
+            }
+          ]
+        }
 
         setPromptConfig({
           prompt_template: '',
@@ -374,6 +388,17 @@ const TextGeneration = () => {
     if (APP_INFO?.title)
       document.title = `${APP_INFO.title} - Powered by Dify`
   }, [APP_INFO?.title])
+
+  // 初始化inputs
+  useEffect(() => {
+    if (promptConfig?.prompt_variables && promptConfig.prompt_variables.length > 0) {
+      const newInputs: Record<string, any> = {}
+      promptConfig.prompt_variables.forEach((item) => {
+        newInputs[item.key] = ''
+      })
+      setInputs(newInputs)
+    }
+  }, [promptConfig])
 
   const [isShowResSidebar, { setTrue: showResSidebar, setFalse: hideResSidebar }] = useBoolean(false)
   const resRef = useRef<HTMLDivElement>(null)
