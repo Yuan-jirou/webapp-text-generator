@@ -10,10 +10,12 @@ export const APP_INFO: AppInfo = {
 }
 
 // 2. 补回底层运行时必需的系统暗号（从 Vercel 环境变量中读取，确保安全不报错）
-export const APP_ID = `${process.env.NEXT_PUBLIC_APP_ID}`
-export const API_KEY = `${process.env.NEXT_PUBLIC_APP_KEY}`
-export const API_URL = `${process.env.NEXT_PUBLIC_API_URL || 'https://api.dify.ai/v1'}`
-
+// @ts-ignore
+export const APP_ID = typeof process !== 'undefined' ? `${process.env.NEXT_PUBLIC_APP_ID}` : ''
+// @ts-ignore
+export const API_KEY = typeof process !== 'undefined' ? `${process.env.NEXT_PUBLIC_APP_KEY}` : ''
+// @ts-ignore
+export const API_URL = typeof process !== 'undefined' ? `${process.env.NEXT_PUBLIC_API_URL || 'https://api.dify.ai/v1'}` : 'https://api.dify.ai/v1'
 // 3. 补回 Dify 前端骨架所要求的核心系统常量（必须导出，否则前端组件会报错）
 export const API_PREFIX = '/api'
 export const LOCALE_COOKIE_NAME = 'locale'
