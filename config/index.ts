@@ -1,18 +1,21 @@
 import type { AppInfo } from '@/types/app'
 
+// 1. 完美保留你高冷的现代简约视觉文案
 export const APP_INFO: AppInfo = {
-  // 1. 名字采用现代极简的双语/斜杠设计
   title: '求职深研社',
-
-  // 2. 现代简约风描述，直奔主题，并在末尾打上高冷却明确的开发者烙印
   description: '只看客观事实,对齐底层内核。Designed and Developed by 袁积柔.',
-
-  // 3. 极简版权声明
   copyright: '© 2026 Yuan Jirou. All rights reserved.',
   privacy_policy: '',
   default_language: 'zh-Hans',
 }
 
-export const API_PREFIX = '/api'
+// 2. 补回底层运行时必需的系统暗号（从 Vercel 环境变量中读取，确保安全不报错）
+export const APP_ID = `${process.env.NEXT_PUBLIC_APP_ID}`
+export const API_KEY = `${process.env.NEXT_PUBLIC_APP_KEY}`
+export const API_URL = `${process.env.NEXT_PUBLIC_API_URL || 'https://api.dify.ai/v1'}`
 
+// 3. 补回 Dify 前端骨架所要求的核心系统常量（必须导出，否则前端组件会报错）
+export const API_PREFIX = '/api'
 export const LOCALE_COOKIE_NAME = 'locale'
+export const DEFAULT_VALUE_MAX_LEN = 160
+export const IS_WORKFLOW = false // 保持与你选用的文本生成应用相匹配
